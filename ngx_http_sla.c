@@ -65,7 +65,7 @@
  * Максимальное количество счетчиков в пуле (минус 1 для счетчика по умолчанию)
  */
 #ifndef NGX_HTTP_SLA_MAX_COUNTERS_LEN
-    #define NGX_HTTP_SLA_MAX_COUNTERS_LEN 16
+    #define NGX_HTTP_SLA_MAX_COUNTERS_LEN 128
 #endif
 
 /**
