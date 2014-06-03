@@ -82,6 +82,12 @@
     #define NGX_HTTP_SLA_QUANTILE_W 0.01
 #endif
 
+/**
+ * Maximum number of pools
+ */
+#ifndef NGX_HTTP_SLA_MAX_POOLS_LEN
+    #define NGX_HTTP_SLA_MAX_POOLS_LEN 256
+#endif
 
 /**
  * Данные счетчиков в shm
@@ -376,7 +382,7 @@ static void* ngx_http_sla_create_main_conf (ngx_conf_t* cf)
         return NULL;
     }
 
-    if (ngx_array_init(&config->pools, cf->pool, 4, sizeof(ngx_http_sla_pool_t)) != NGX_OK) {
+    if (ngx_array_init(&config->pools, cf->pool, NGX_HTTP_SLA_MAX_POOLS_LEN, sizeof(ngx_http_sla_pool_t)) != NGX_OK) {
         return NULL;
     }
 
