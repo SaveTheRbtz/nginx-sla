@@ -90,6 +90,13 @@
 #endif
 
 /**
+ * Maximum number of aliases
+ */
+#ifndef NGX_HTTP_SLA_MAX_ALIASES_LEN
+    #define NGX_HTTP_SLA_MAX_ALIASES_LEN 256
+#endif
+
+/**
  * Данные счетчиков в shm
  */
 typedef struct {
@@ -388,7 +395,7 @@ static void* ngx_http_sla_create_main_conf (ngx_conf_t* cf)
 
     config->default_pool = NULL;
 
-    if (ngx_array_init(&config->aliases, cf->pool, NGX_HTTP_SLA_MAX_TIMINGS_LEN, sizeof(ngx_http_sla_alias_t)) != NGX_OK) {
+    if (ngx_array_init(&config->aliases, cf->pool, NGX_HTTP_SLA_MAX_ALIASES_LEN, sizeof(ngx_http_sla_alias_t)) != NGX_OK) {
         return NULL;
     }
 
